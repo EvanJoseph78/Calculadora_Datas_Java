@@ -1,4 +1,3 @@
-import javax.print.attribute.standard.JobHoldUntil;
 import javax.swing.JOptionPane;
 
 public class InterfaceGrafica {
@@ -6,11 +5,7 @@ public class InterfaceGrafica {
 
     public void iniciaApp() {
         Data data1 = inputUsuario("Entre com a primeira Data: "); 
-        // data1.getData();
         Data data2 = inputUsuario("Entre com a segunda Data: ");
-        // data2.getData();
-        // CalculadoraData c = new CalculadoraData(data1, data2);
-        // c.calculaDiferencaData();
         CalculadoraData c = new CalculadoraData();
         System.out.println(c.diferencaEntreDatas(data1, data2));
         JOptionPane.showMessageDialog(null,"Passaram-se " + c.diferencaEntreDatas(data1, data2) + " dias.");
