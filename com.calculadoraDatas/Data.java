@@ -5,6 +5,9 @@ public class Data implements Comparable<Data> {
 
     
     public Data(int dia, int mes, int ano) {
+        this.dia = dia;
+        this.mes = mes;
+        this.ano = ano;
         if(isValid(dia, mes, ano)){
             System.out.println("Data válida!!!!!");
             System.out.println(dia+"-"+mes+"-"+ano);

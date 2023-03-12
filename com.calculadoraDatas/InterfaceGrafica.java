@@ -1,19 +1,23 @@
+import javax.print.attribute.standard.JobHoldUntil;
 import javax.swing.JOptionPane;
 
 public class InterfaceGrafica {
 
 
     public void iniciaApp() {
-        inputUsuario("Entre com a primeira Data: "); 
+        Data data1 = inputUsuario("Entre com a primeira Data: "); 
         // data1.getData();
-        inputUsuario("Entre com a segunda Data: ");
+        Data data2 = inputUsuario("Entre com a segunda Data: ");
         // data2.getData();
         // CalculadoraData c = new CalculadoraData(data1, data2);
         // c.calculaDiferencaData();
+        CalculadoraData c = new CalculadoraData();
+        System.out.println(c.diferencaEntreDatas(data1, data2));
+        JOptionPane.showMessageDialog(null,"Passaram-se " + c.diferencaEntreDatas(data1, data2) + " dias.");
         
     }
 
-    public void inputUsuario(String mensagem) {
+    public Data inputUsuario(String mensagem) {
         String data = JOptionPane.showInputDialog(null, mensagem);
         PatternFinder p = new PatternFinder(data, "[0-9]+[\\- | \\/]+[0-9]+[\\- | \\/]+[0-9]+");
         if(p.isEqual() == false) {
@@ -25,6 +29,6 @@ public class InterfaceGrafica {
             inputUsuario("Data inválida! Entre com uma data válida: dd-mm-aaaa"); 
         }
         
-
+        return dataEntrada;
     }
 }
