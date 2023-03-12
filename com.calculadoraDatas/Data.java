@@ -1,12 +1,28 @@
-import javax.xml.transform.SourceLocator;
 
 public class Data implements Comparable<Data> {
     private int dia, mes, ano;
+
+
     
     public Data(int dia, int mes, int ano) {
-        this.dia = dia;
-        this.mes = mes;
-        this.ano = ano;
+        if(isValid(dia, mes, ano)){
+            System.out.println("Data válida!!!!!");
+            System.out.println(dia+"-"+mes+"-"+ano);
+            this.dia = dia;
+            this.mes = mes;
+            this.ano = ano;
+        }else {
+            System.out.println("Data inválida!!!");
+            System.out.println(dia+"-"+mes+"-"+ano);
+            this.dia = 0;
+            this.mes = 0;
+            this.ano = 0;
+
+        }
+
+        // this.dia = dia;
+        // this.mes = mes;
+        // this.ano = ano;
     }
 
     public boolean isBissexto(int ano) {
@@ -15,7 +31,9 @@ public class Data implements Comparable<Data> {
 
     public int quantidadeDiasMes(int mes){
         if (mes == 2){
+            System.out.println(this.ano);
             if (isBissexto(this.ano)){
+                System.out.println("5ahfawheifhawiefheawif");
                 return 29;
             }
             return 28;
@@ -82,7 +100,24 @@ public class Data implements Comparable<Data> {
     }
 
     
-    
+    public boolean isValid(int dia, int mes, int ano) {
+
+        if ((ano < 0 || ano > 10000) || (mes < 0) || (mes > 12)) {
+            return false;
+        }
+
+        if (dia > this.quantidadeDiasMes(this.mes)) {
+            return false;
+        }
+
+        if (mes == 2 && dia == 29 && !isBissexto(this.ano)){
+            return false;
+        }
+        System.out.println(isBissexto(ano));
+        System.out.println(quantidadeDiasMes(mes));
+
+        return true;
+    }    
 
 
     
