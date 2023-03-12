@@ -1,4 +1,6 @@
-public class Data{
+import javax.xml.transform.SourceLocator;
+
+public class Data implements Comparable<Data> {
     private int dia, mes, ano;
     
     public Data(int dia, int mes, int ano) {
@@ -52,6 +54,35 @@ public class Data{
     public int getAno() {
         return ano;
     }
+
+    @Override
+    public int compareTo(Data data2) {
+        if (ano < data2.getAno()) {
+            return 1;
+        } else if (ano > data2.getAno()) {
+            return -1;
+        } else {
+            // anos iguais
+            if (mes < data2.getMes()) {
+                return 1;
+            } else if (mes > data2.getMes()) {
+                return -1;
+            } else {
+                // anos e meses iguais
+                if (dia < data2.getDia()) {
+                    return 1;
+                } else if (dia > data2.getDia()) {
+                    return -1;
+                } else {
+                    // datas iguais
+                    return 0;
+                }
+            }
+        }
+    }
+
+    
+
 
     
 
